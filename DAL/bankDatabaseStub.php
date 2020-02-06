@@ -179,7 +179,7 @@ class BankDBStub
     */
     function slettKunde($personnummer)
     {
-        if ($personnummer == !null) {
+        if ($personnummer ==! null) {
             return "OK";
         }
         return "Feil";

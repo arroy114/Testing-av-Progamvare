@@ -5,15 +5,7 @@ include_once '../Model/domeneModell.php';
 
 class AdminDBStub {
 
-    function hentEnKunde($personnummer) {
-        $enKunde = new kunde();
-        $enKunde->personnummer = $personnummer;
-        $enKunde->fornavn = "Per Olsen";
 
-        $enKunde->adresse = "Osloveien 82, 0270 Oslo";
-        $enKunde->telefonnr = "12345678";
-        return $enKunde;
-    }
 
     function hentAlleKunder() {
         $alleKunder = array();
