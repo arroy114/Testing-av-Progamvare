@@ -1,37 +1,43 @@
 <?php
-
 include_once '../Model/domeneModell.php';
 
-class AdminDB {
-/*
-    function hentAlleKunder() {
 
-        $kunder = array();
+
+class AdminDBStub {
+
+    function hentEnKunde($personnummer) {
+        $enKunde = new kunde();
+        $enKunde->personnummer = $personnummer;
+        $enKunde->fornavn = "Per Olsen";
+
+        $enKunde->adresse = "Osloveien 82, 0270 Oslo";
+        $enKunde->telefonnr = "12345678";
+        return $enKunde;
+    }
+
+    function hentAlleKunder() {
+        $alleKunder = array();
         $kunde1 = new kunde();
-        $kunde1->fornavn = "Olav";
-        $kunde1->etternavn = "Rekson";
-        $kunde1->adresse = "Storgate 83 0270 Oslo";
-        $kunde1->telefonnr = "234234234";
-        $kunde1->epost = "Olav@gmail.com";
+        $kunde1->personnummer = "01010122344";
+        $kunde1->navn = "Per Olsen";
+        $kunde1->adresse = "Osloveien 82 0270 Oslo";
+        $kunde1->telefonnr = "12345678";
         $alleKunder[] = $kunde1;
         $kunde2 = new kunde();
-        $kunde2->fornavn = "Toni";
-        $kunde2->etternavn = "Sadio";
-        $kunde2->adresse = "Asalkveien 10, 1234 Drammen";
-        $kunde2->telefonnr = "983663552";
-        $kunde2->epost = "Toni@gmail.com";
+        $kunde2->personnummer = "01012122344";
+        $kunde2->navn = "Line Jensen";
+        $kunde2->adresse = "Askerveien 100, 1379 Asker";
+        $kunde2->telefonnr = "92876789";
         $alleKunder[] = $kunde2;
         $kunde3 = new kunde();
-        $kunde3->fornavn = "Roxan";
-        $kunde3->etternavn = "Salama";
-        $kunde3->adresse = "Trimvein 6 , 0372 Oslo";
-        $kunde3->telefonnr = "9834234";
-        $kunde3->epost = "Roxan@gmail.com";
+        $kunde3->personnummer = "02020233455";
+        $kunde3->navn = "Ole Olsen";
+        $kunde3->adresse = "Bærumsveien 23, 1234 Bærum";
+        $kunde3->telefonnr = "99889988";
         $alleKunder[] = $kunde3;
-
-        return $kunder;
+        return $alleKunder;
     }
-*/
+
     function endreKundeInfo($kunde) {
         if ($kunde->fornavn == null) {
             return "Feil";
@@ -40,10 +46,17 @@ class AdminDB {
     }
 
     function registrerKunde($kunde) {
-        if ($kunde->fornavn == "Olav") {
-            return "OK";
+        if ($kunde->postnr == -1) {
+            return "Feil";
         }
-        return "Feil";
+
+          $enkunde =new kunde();
+          $enkunde->fornavn= "Ole";
+          $enkunde->etternavn="Olsen";
+          $enkunde->adresse = "Osloevein 2";
+          $enkunde->telefonnr="4636328";
+          $enkunde->personnummer="12345678923";
+        return "OK";
     }
 
     function slettKunde($personnummer) {
@@ -57,7 +70,7 @@ class AdminDB {
 
     function registerKonto($konto) {
 
-        if ($konto->$kontonummer ==! null) {
+        if ( $konto->kontonummer ==! null) {
             return "OK";
         } else {
             return "Feil";
@@ -65,8 +78,11 @@ class AdminDB {
     }
 
     function endreKonto($konto) {
-        if ($konto->$kontonummer == -1) {
-            return "feil";
+        if($konto->personnummer == -1) {
+            return "Feil i personnummer";
+        }
+        else if ( $konto->kontonummer == -1) {
+            return "Feil i kontonummer";
         } else {
             return "OK";
         }
@@ -74,59 +90,33 @@ class AdminDB {
 
     function hentAlleKonti() {
         $konto = array();
+
         $konto1 = new konto();
-        $trans1=new transaksjon();
         $konto1->personnummer = "12345678912";
         $konto1->kontonummer = "22334412345";
         $konto1->saldo = 0;
         $konto1->type = "Sparkonto";
         $konto1->valuta = "NOK";
-        $konto1->transaksjoner = array(); // av transaksjon
-      
-        $trans1-> fraTilKontonummer="105010123456" ;
-        $trans1->  transaksjonBelop=2500;
-        $trans1->  belop=100;
-        $trans1->  dato="15-3-2015";
-        $trans1->  melding="Husleie";
-        $trans1->  avventer=0;
-        $transaksjoner1[]=$trans1;
-        
-        
+
+        $konto[]=$konto1;
         $konto2 = new konto();
-        $trans2=new transaksjon();
+
         $konto2->personnummer = "23423423423";
         $konto2->kontonummer = "34556577845";
         $konto2->saldo = 1000;
         $konto2->type = "Sparkonto";
         $konto2->valuta = "EUR";
-        $konto2->transaksjoner = array(); 
-    
-          
-        $trans2-> fraTilKontonummer="20102012345";
-        $trans2->  transaksjonBelop=200;
-        $trans2->  belop=100;
-        $trans2->  dato="1-2-2018";
-        $trans2->  melding="Skatt";
-        $trans2->  avventer=1;
-        $transaksjoner2[]=$trans2;
-        
+        $konto[]=$konto2;
+
         $konto3 = new konto();
-        $trans3=new transaksjon();
-        $konto3->personnummer = 45545645645;
-        $konto3->kontonummer = 7884564563;
+        $konto3->personnummer = "45545645645";
+        $konto3->kontonummer = "7884564563";
         $konto3->saldo = 100;
         $konto3->type = "Sparkonto";
         $konto3->valuta = "NOK";
-        $konto3->transaksjoner3 = array(); 
-        
-        $trans3-> fraTilKontonummer=20102012345;
-        $trans3->  transaksjonBelop=400;
-        $trans3->  belop=1000;
-        $trans3->  dato=11/12/2019;
-        $trans3->  melding="Leie BIl";
-        $trans3->  avventer=1;
-        $transaksjoner3[]=$trans3;
-        
+        $konto[]=$konto3;
+
+        return $konto;
     }
 
     function slettKonto($kontonummer) {
@@ -134,7 +124,7 @@ class AdminDB {
         if ($kontonummer==! null) {
             return "Ok";
         }
-        return "Feil";
+        return "Feil kontonummer";
     }
 
 }

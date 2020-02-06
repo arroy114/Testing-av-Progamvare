@@ -2,41 +2,12 @@
 
 include_once '../Model/domeneModell.php';
 
-class BankDBStub {
+class BankDBStub
+{
 
-    function hentEnKunde($personnummer) {
-        $enKunde = new kunde();
-        $enKunde->personnummer = $personnummer;
-        $enKunde->navn = "Per Olsen";
-        $enKunde->adresse = "Osloveien 82, 0270 Oslo";
-        $enKunde->telefonnr = "12345678";
-        return $enKunde;
-    }
 
-    function hentAlleKunder() {
-        $alleKunder = array();
-        $kunde1 = new kunde();
-        $kunde1->personnummer = "01010122344";
-        $kunde1->navn = "Per Olsen";
-        $kunde1->adresse = "Osloveien 82 0270 Oslo";
-        $kunde1->telefonnr = "12345678";
-        $alleKunder[] = $kunde1;
-        $kunde2 = new kunde();
-        $kunde2->personnummer = "01010122344";
-        $kunde2->navn = "Line Jensen";
-        $kunde2->adresse = "Askerveien 100, 1379 Asker";
-        $kunde2->telefonnr = "92876789";
-        $alleKunder[] = $kunde2;
-        $kunde3 = new kunde();
-        $kunde3->personnummer = "02020233455";
-        $kunde3->navn = "Ole Olsen";
-        $kunde3->adresse = "Bærumsveien 23, 1234 Bærum";
-        $kunde3->telefonnr = "99889988";
-        $alleKunder[] = $kunde3;
-        return $alleKunder;
-    }
-
-    function hentTransaksjoner($kontoNr, $fraDato, $tilDato) {
+    function hentTransaksjoner($kontoNr, $fraDato, $tilDato)
+    {
         date_default_timezone_set("Europe/Oslo");
         $fraDato = strtotime($fraDato);
         $tilDato = strtotime($tilDato);
@@ -85,17 +56,20 @@ class BankDBStub {
         return $konto;
     }
 
-    function sjekkLoggInn($personnummer, $passord) {
+    function sjekkLoggInn($personnummer, $passord)
+    {
 
         if ($personnummer == "5678912") {
             return "Feil i personnummer";
-        } if($passord == "Hei") {
+        }
+        if ($passord == "Hei") {
             return "Feil i passord";
         }
         return "OK";
     }
 
-    function hentKonti($personnummer) {
+    function hentKonti($personnummer)
+    {
 
         $konto = array();
         $konto1 = new konto();
@@ -123,7 +97,8 @@ class BankDBStub {
         return $konto1;
     }
 
-    function hentSaldi($personnummer) {
+    function hentSaldi($personnummer)
+    {
         $konto = array();
         $konto1 = new konto();
         $trans1 = new transaksjon();
@@ -153,9 +128,10 @@ class BankDBStub {
         return $konto1;
     }
 
-    function registrerBetaling($kontoNr, $transaksjon) {
+    function registrerBetaling($kontoNr, $transaksjon)
+    {
 
-        if ($kontoNr ==! null) {
+        if ($kontoNr ==! null && $transaksjon->fraTilKontonummer ==! null) {
             return "OK";
         } else {
             return "Feil";
@@ -163,7 +139,8 @@ class BankDBStub {
     }
 
 
-    function hentBetalinger($personnummer) {
+    function hentBetalinger($personnummer)
+    {
 
         $betalinger = new transaksjon();
         $betalinger->fraTilKontonummer = $personnummer;
@@ -176,35 +153,40 @@ class BankDBStub {
         return $betalinger;
     }
 
-    function utforBetaling($TxID) {
+    function utforBetaling($TxID)
+    {
         if ($TxID == -1) {
             return "Feil";
         }
         return "OK";
     }
 
-    function endreKundeInfo($kunde) {
+    function endreKundeInfo($kunde)
+    {
         if ($kunde->fornavn == null) {
             return "Feil";
         }
         return "OK";
     }
 
-    function registrerKunde($kunde) {
-        if ($kunde->postnr == -1) {
-            return "Feil";
+    /*
+        function registrerKunde($kunde) {
+            if ($kunde->postnr == -1) {
+                return "Feil";
+            }
+            return "Ok";
         }
-        return "Ok";
-    }
-
-    function slettKunde($personnummer) {
+    */
+    function slettKunde($personnummer)
+    {
         if ($personnummer == !null) {
             return "OK";
         }
         return "Feil";
     }
 
-    function hentKundeInfo($personnummer) {
+    function hentKundeInfo($personnummer)
+    {
         $kunde = new kunde();
 
         $kunde->personnummer = $personnummer;
