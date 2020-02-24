@@ -1,9 +1,5 @@
 <?php
-/*
-require __DIR__.'/../Model/domeneModell.php';
-require __DIR__.'/../DAL/adminDatabaseStub.php';
-require __DIR__.'/../BLL/adminLogikk.php';
-*/
+
 include_once '../Model/domeneModell.php';
 include_once '../DAL/adminDatabaseStub.php';
 include_once '../BLL/adminLogikk.php';
