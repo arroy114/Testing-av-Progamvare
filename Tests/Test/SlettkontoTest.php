@@ -11,8 +11,8 @@ class SlettkontoTest extends TestCase
 
  {
      $admin = new Admin(new AdminDBStub());
-     $enkonto = $admin->slettKunde("7884564563");
-     $this->assertEquals("OK",$enkonto);
+     $enkonto = $admin->slettKonto("7884564563");
+     $this->assertEquals("Ok",$enkonto);
 
  }
     public function testslettKontofeil()
