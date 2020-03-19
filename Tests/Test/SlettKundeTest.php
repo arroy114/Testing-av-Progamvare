@@ -11,12 +11,12 @@ include_once '../BLL/adminLogikk.php';
 class SlettKundeTest extends PHPUnit\Framework\TestCase
 {
     public function testSlettKundeOK(){
-        $admin =new Admin(new AdminDBStub());
+        $admin =new Admin(new BankDBStub());
         $enkunde = $admin->slettKunde("23432346876");
         $this->assertEquals("OK",$enkunde);
     }
     public function testSlettKundeFeil(){
-        $admin =new Admin(new AdminDBStub());
+        $admin =new Admin(new BankDBStub());
         $enkunde = $admin->slettKunde(null);
         $this->assertEquals("Feil",$enkunde);
     }
