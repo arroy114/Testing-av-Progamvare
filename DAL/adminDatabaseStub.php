@@ -42,12 +42,6 @@ class AdminDBStub {
             return "Feil";
         }
 
-          $enkunde =new kunde();
-          $enkunde->fornavn= "Ole";
-          $enkunde->etternavn="Olsen";
-          $enkunde->adresse = "Osloevein 2";
-          $enkunde->telefonnr="4636328";
-          $enkunde->personnummer="12345678923";
         return "OK";
     }
 
