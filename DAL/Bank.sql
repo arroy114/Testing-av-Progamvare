@@ -6,6 +6,14 @@
 
 -- --------------------------------------------------------
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+-----------------------------------------------------------
+
+DROP TABLE IF EXISTS `konto`;
+DROP TABLE IF EXISTS `kunde`;
+DROP TABLE IF EXISTS `poststed`;
+DROP TABLE IF EXISTS `transaksjon`;
+
 --
 -- Tabellstruktur for tabell `Konto`
 --
