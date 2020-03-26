@@ -15,7 +15,7 @@
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="/Testing-Av-Programvare/Index.php" class="navbar-brand">TestingBank</a>
+          <a href="/TestingBank/Index.php" class="navbar-brand">TestingBank</a>
           <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -24,7 +24,7 @@
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav navbar-right">
-              <li><a href="/Testing-Av-Programvare/View/loggInnAdmin.php">Admin</a></li>
+              <li><a href="/TestingBank/View/loggInnAdmin.php">Admin</a></li>
           </ul>
         </div>
       </div>  
