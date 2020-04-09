@@ -58,13 +58,16 @@ class BankDBStub
 
     function sjekkLoggInn($personnummer, $passord)
     {
-
-        if ($personnummer == "5678912") {
+        if(!preg_match("/[0-9]{11}/", $personnummer))
+        {
             return "Feil i personnummer";
         }
-        if ($passord == "Hei") {
+        
+        if(!preg_match("/.{6,30}/", $passord))
+        {
             return "Feil i passord";
         }
+        
         return "OK";
     }
 

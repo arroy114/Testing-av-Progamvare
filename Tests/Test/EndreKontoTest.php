@@ -25,6 +25,7 @@ class EndreKontoTest extends PHPUnit\Framework\TestCase
         $enkonto = $admin->endreKonto($konto);
         $this->assertEquals("Feil i personnummer", $enkonto);
     }
+    
     public function testendreKontoOK()
     {
         $admin = new Admin(new AdminDBStub());
