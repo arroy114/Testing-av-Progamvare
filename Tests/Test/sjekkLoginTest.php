@@ -11,6 +11,12 @@ include_once '../BLL/bankLogikk.php';
 
 class sjekkLoginTest extends PHPUnit\Framework\TestCase
 {
+     public function testsjekkLoggInnFeilPersonnummer() {
+        $kunde = new Bank(new BankDBStub());
+        $loggin = $kunde->sjekkLoggInn("11122233399", "HeiHei");
+        $this->assertEquals("Feil",$loggin);
+     }
+     
     public function testsjekkLoggInnFeilPersonnummerMerEnn11Tall() {
         $kunde = new Bank(new BankDBStub());
         $loggin = $kunde->sjekkLoggInn("123456789011", "HeiHei");
@@ -19,17 +25,23 @@ class sjekkLoginTest extends PHPUnit\Framework\TestCase
     
         public function testsjekkLoggInnFeilPersonnummerMindreEnn11Tall() {
         $kunde = new Bank(new BankDBStub());
-        $loggin = $kunde->sjekkLoggInn("5678912", "HeiHei");
+        $loggin = $kunde->sjekkLoggInn("111", "HeiHei");
         $this->assertEquals("Feil i personnummer",$loggin);
     }
 
 
     public function testsjekkLoggInnFeilPassord() {
         $kunde = new Bank(new BankDBStub());
-        $loggin = $kunde->sjekkLoggInn("12345678912", "Hei");
+        $loggin = $kunde->sjekkLoggInn("12345678912", "aaaaaaaaaaaaaaaaaaaaa");
         $this->assertEquals("Feil i passord",$loggin);
     }
-
+    
+       public function testsjekkLoggInnFeilPassordMindreEnn2() {
+        $kunde = new Bank(new BankDBStub());
+        $loggin = $kunde->sjekkLoggInn("12345678912", "aa");
+        $this->assertEquals("Feil i passord",$loggin);
+    }
+    
     public function testsjekkLoggInnOK() {
         $bank = new Bank(new BankDBStub());
         $loggin = $bank->sjekkLoggInn("12345678912", "HeiHei");
